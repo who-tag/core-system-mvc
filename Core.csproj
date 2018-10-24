@@ -309,6 +309,7 @@
     <Folder Include="Services\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\Registration\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Stations\Index.cshtml.cs" />
