@@ -161,6 +161,7 @@
     <Content Remove="Views\Banking\Index.cshtml" />
     <Content Remove="Views\Products\FuelList.cshtml" />
     <Content Remove="Views\Purchases\FuelPurchaseLedger.cshtml" />
+    <Content Remove="Views\Home\Contact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="wwwroot\js\custom-reports-index-script.js" />
