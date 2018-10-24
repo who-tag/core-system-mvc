@@ -1,107 +1,149 @@
-﻿    @{
-        ViewData["Title"] = "New Patient";
-    }
+﻿@{
+    ViewData["Title"] = "New Patient";
+}
 
-    <br>
-    <h5 style="font-weight: 900;">Patient Informations </h5>
-      <div class="row">
-        <form class="col s12">
-          <div class="row">
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">First Name</label>
-            </div>
-            <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Middle Name</label>
-            </div>
-             <div class="input-field col s6">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Last Name</label>
-            </div>
-            <div class="input-field col s6">
-            <i class="material-icons prefix">event</i>
-             <label for="icon_prefix">Date of Birth</label>
-              <input type="text" class="datepicker">
-            </div>
-          </div>
-           <div>
-        <div class="input-field col s12 m6">
-                     <i class="material-icons prefix">language</i>
-        <select>
-          <option value="" disabled selected>Choose your Citizenship</option>
-          <option value="1">Kenyan</option>
-          <option value="2">Congolese</option>
-          <option value="3">Nigerian</option>
-        </select>
-        <label>Citizenship</label>
-      </div>
+<style>
+    #projects-collection .collection-header {
+        font-size: 1.24rem;
+        font-weight: 500;
+    }
+    #projects-collections .collection-item.avatar {
+        height: auto;
+        padding-top: 22px;
+    }
+    .collection .collection-item.avatar {
+        min-height: 50px;
+    }
+    .btn.waves-effect {
+        margin-left: 43px;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="row">
+    @using (Html.BeginForm("PostInfrastructure", "Facility", FormMethod.Post))
+    {
+        <ul id="projects-collection" class="collection z-depth-1">
+            <li class="collection-item avatar">
+                <i class="material-icons red accent-2 circle">assignment_ind</i>
+                <h6 class="collection-header m-0 cyan-text">Patient Information</h6>
+                <p>Patient's Demographic Details</p>
+            </li>
+
+            <li class="collection-item">
                 <div class="input-field col s6">
-              <i class="material-icons prefix">location_on</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Physical Address</label>
-            </div>
-                  <div class="input-field col s6">
-              <i class="material-icons prefix">phone</i>
-              <input id="icon_prefix" type="number" >
-              <label for="icon_prefix">Mobile Number</label>
-            </div>
-                  <div class="input-field col s6">
-              <i class="material-icons prefix">mail</i>
-              <input id="icon_prefix" type="email" >
-              <label for="icon_prefix">Email</label>
-            </div>
-                
-      </div>
-            <div class="input-field col s6">
-            <i class="material-icons prefix">textsms</i>
-              <input id="icon_prefix" type="text" >
-              <label for="icon_prefix">Nickname</label>
-            </div> 
-           <div class="input-field col s12 m6">
-                     <i class="material-icons prefix">language</i>
-        <select>
-          <option value="" disabled selected>Country of Residences </option>
-          <option value="1">Kenya</option>
-          <option value="2">Tanzania</option>
-          <option value="3">Uganda</option>
-        </select>
-        <label>Country of Residence</label>
-      </div>
-         <h5  style="font-weight: 900;">Next of Kin Informations </h5>
-        <br>
-            <div class="input-field col s6">
-            <i class="material-icons prefix">textsms</i>
-              <input id="icon_prefix" type="text" >
-              <label for="icon_prefix">Next of Kin</label>
-            </div>
-          <div class="input-field col s12 m6">
-                     <i class="material-icons prefix">language</i>
-        <select>
-          <option value="" disabled selected>Relationship</option>
-          <option value="1">Father</option>
-          <option value="2">Mother</option>
-          <option value="3">Brother</option>
-        </select>
-        <label>Relationship</label>
-      </div>
-              <div class="input-field col s6">
-              <i class="material-icons prefix">location_on</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Physical Address</label>
-            </div>
-                  <div class="input-field col s6">
-              <i class="material-icons prefix">phone</i>
-              <input id="icon_prefix" type="number" >
-              <label for="icon_prefix">Mobile Number</label>
-            </div>
-                  <div class="input-field col s12">
-              <i class="material-icons prefix">mail</i>
-              <input id="icon_prefix" type="email" >
-              <label for="icon_prefix">Email</label>
-            </div>
-        </form>
-      </div>
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Full Names</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">event</i>
+                    <label for="icon_prefix">Date of Birth</label>
+                    <input type="text" class="datepicker">
+                </div>
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">language</i>
+                    <select>
+                        <option value="" disabled selected>Choose your Citizenship</option>
+                        <option value="1">Kenyan</option>
+                        <option value="2">Congolese</option>
+                        <option value="3">Nigerian</option>
+                    </select>
+                    <label>Citizenship</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Physical Address</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="icon_prefix" type="number" >
+                    <label for="icon_prefix">Mobile Number</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mail</i>
+                    <input id="icon_prefix" type="email" >
+                    <label for="icon_prefix">Email</label>
+                </div>
+                    
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">textsms</i>
+                    <input id="icon_prefix" type="text" >
+                    <label for="icon_prefix">Nickname</label>
+                </div>
+                    
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">language</i>
+                    <select>
+                        <option value="" disabled selected>Country of Residences </option>
+                        <option value="1">Kenya</option>
+                        <option value="2">Tanzania</option>
+                        <option value="3">Uganda</option>
+                    </select>
+                    <label>Country of Residence</label>
+                </div>
+                <br style="clear:both"/>
+            </li>
+
+            <li class="collection-item avatar">
+                <i class="material-icons red accent-2 circle">assignment_ind</i>
+                <h6 class="collection-header m-0 cyan-text">Next of Kin</h6>
+                <p>Patient's Next of Kin Details</p>
+            </li>
+
+            <li class="collection-item">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">textsms</i>
+                    <input id="icon_prefix" type="text" >
+                    <label for="icon_prefix">Next of Kin</label>
+                </div>
+                    
+                <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">language</i>
+                    <select>
+                        <option value="" disabled selected>Relationship</option>
+                        <option value="1">Father</option>
+                        <option value="2">Mother</option>
+                        <option value="3">Brother</option>
+                    </select>
+                    <label>Relationship</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Physical Address</label>
+                </div>
+                    
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="icon_prefix" type="number" >
+                    <label for="icon_prefix">Mobile Number</label>
+                </div>
+                    
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mail</i>
+                    <input id="icon_prefix" type="email" >
+                    <label for="icon_prefix">Email</label>
+                </div>
+                <div style="clear:both"></div>
+            </li>
+
+            <li class="collection-item">
+                <div class="input-field col-md-6">
+                    <i class="material-icons prefix">swap_horiz</i>
+                    <select>
+                        <option value="1">Casualty</option>
+                        <option value="2" selected>OPD Triage</option>
+                        <option value="3">OPD Clinic</option>
+                        <option value="4">Special Clinics</option>
+                    </select>
+                    <label>Send To</label>
+                    <a class="btn waves-effect waves-light gradient-45deg-light-blue-cyan">Register</a>
+                </div>
+                <div style="clear:both"></div>
+            </li>
+        </ul>
+    }
+</div>
