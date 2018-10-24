@@ -1,6 +1,122 @@
-﻿
+﻿@model Core.ViewModel.HomeIndexViewModel;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+
 @{
     ViewData["Title"] = "Home";
 }
 
-<h1>Homepage Here</h1>
+<style>
+    .banner {
+        margin-top: 10px;
+        background: #3677cc url("/images/highlight.png");
+        background-position: 120px 116px;
+        background-repeat: no-repeat;
+        background-size: 90% 5px;
+        overflow: hidden;
+    }
+    .banner img {
+        display: inline-block;
+        height:120px;
+        float: left
+    }
+    #banner-view {
+        box-sizing: border-box; 
+        display: inline-block;
+        height: 120px;
+        position: absolute;
+        width: 1058px;
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box;     
+    }
+    #right-box {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        text-align: right;
+    }
+    .bottom-box {
+        position: absolute;
+        bottom: 4px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        width: 150px;
+    }
+    #bottom-box-1 {
+        background: #4697ee;
+        left: 0;
+    }
+    #bottom-box-2 {
+        background: #77b5f2;
+        left: 150px;
+    }
+    #bottom-box-3 {
+        background: #9ecbf6;
+        color: #0897d8;
+        left: 300px;
+        text-align: right;
+        padding-right: 5px;
+        width: 735px;
+    }
+    .app-icons {
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    .app-icons a {
+        text-decoration: none;
+    }
+    .app-icons a.col-md-1 {
+        padding: 0;
+    }
+    .app-icons a.col-md-1 i.material-icons {
+        border-radius: 50%;
+        color: #fff;
+        padding: 8px;
+    }
+    .app-icons a.col-md-1 h6 {
+        color: #0193d4;
+    }
+</style>
+
+<div class="banner">
+    <img src="~/images/icons/health.png" />
+    <div id="banner-view" class="white-text">
+        <h4><i class="material-icons">clear_all</i>Administrator Dashboard</h4>
+        <div id="right-box"></div>
+        <div id="bottom-box-1" class="bottom-box">0 New Patients</div>
+        <div id="bottom-box-2" class="bottom-box">0 Admissions</div>
+        <div id="bottom-box-3" class="bottom-box">User /@HttpContextAccessor.HttpContext.User.Identity.Name</div>
+    </div>
+</div>
+
+<div class="app-icons">
+    <a class="col-md-1" href="/registration/new-patient">
+        <i class="material-icons medium" style="background:#7e57c2">group_add</i>
+        <h6>New Patient</h6>
+    </a>
+
+    <a class="col-md-1" href="/registration/revisit">
+        <i class="material-icons medium" style="background:#eb407a">supervisor_account</i>
+        <h6>Revisit</h6>
+    </a>
+
+    <a class="col-md-1" href="/registration/search">
+        <i class="material-icons medium" style="background:#3e51b4">search</i>
+        <h6>Search</h6>
+    </a>
+
+    <a class="col-md-1" href="/billing/cashier">
+        <i class="material-icons medium" style="background: #009688">attach_money</i>
+        <h6>Cashier</h6>
+    </a>
+
+    <a class="col-md-1" href="/patient-dashboard/triage">
+        <i class="material-icons medium" style="background:#607d8b">transfer_within_a_station</i>
+        <h6>Triage</h6>
+    </a>
+
+
+    <div style="clear:both"></div>
+</div>

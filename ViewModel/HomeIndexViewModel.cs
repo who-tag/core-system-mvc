@@ -4,9 +4,9 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Core.ViewModel
 {
-    public class IndexViewModel
+    public class HomeIndexViewModel
     {
-        public IndexViewModel()
+        public HomeIndexViewModel()
         {
         }
     }
