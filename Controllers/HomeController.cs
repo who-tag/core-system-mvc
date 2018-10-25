@@ -15,6 +15,11 @@ namespace Core.Controllers
         {
             return View();
         }
+        [Route("programs/all-programs")]
+        public IActionResult Programs()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

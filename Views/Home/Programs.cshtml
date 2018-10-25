@@ -1,0 +1,146 @@
+﻿@model Core.ViewModel.HomeIndexViewModel;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+
+@{
+    ViewData["Title"] = "Programs";
+}
+
+<style>
+    .banner {
+        margin-top: 10px;
+        background: #3677cc url("/images/highlight.png");
+        background-position: 120px 116px;
+        background-repeat: no-repeat;
+        background-size: 90% 5px;
+        overflow: hidden;
+    }
+    .banner img {
+        display: inline-block;
+        height:120px;
+        float: left
+    }
+    #banner-view {
+        box-sizing: border-box; 
+        display: inline-block;
+        height: 120px;
+        position: absolute;
+        width: 1058px;
+        -moz-box-sizing: border-box; 
+        -webkit-box-sizing: border-box;     
+    }
+    #right-box {
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        text-align: right;
+    }
+    .bottom-box {
+        position: absolute;
+        bottom: 4px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        width: 150px;
+    }
+    #bottom-box-1 {
+        background: #4697ee;
+        left: 0;
+    }
+    #bottom-box-2 {
+        background: #77b5f2;
+        left: 150px;
+    }
+    #bottom-box-3 {
+        background: #9ecbf6;
+        color: #0897d8;
+        left: 300px;
+        text-align: right;
+        padding-right: 5px;
+        width: 735px;
+    }
+    .app-icons {
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    .app-icons a {
+        text-decoration: none;
+    }
+    .app-icons a.col-md-1 {
+        padding: 0;
+    }
+    .app-icons a.col-md-1 i.material-icons {
+        border-radius: 50%;
+        color: #fff;
+        padding: 8px;
+    }
+    .app-icons a.col-md-1 h6 {
+        color: #0193d4;
+    }
+</style>
+
+<div class="banner">
+    <img src="~/images/icons/who.png" />
+    <div id="banner-view" class="white-text">
+        <h4><i class="material-icons">clear_all</i>Programs Dashboard</h4>
+    </div>
+</div>
+<section id="team" class="pb-5">
+    <div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div style="cursor:pointer;" class="image-flip">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                   <p><img class=" img-fluid" src="~/images/icons/goal3.png" height="120px" width="120px" alt="card image"></p>
+                                    <h4 class="card-title">Facility</h4>
+ 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                 <div style="cursor:pointer;" class="image-flip">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                   <p><img class=" img-fluid" src="~/images/icons/who.png" height="120px" width="120px" alt="card image"></p>
+                                    <h4 class="card-title">Community</h4>
+                                   
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                 <div style="cursor:pointer;" class="image-flip">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="~/images/icons/who.png" height="120px" width="120px" alt="card image"></p>
+                                    <h4 class="card-title">Surveilance</h4>
+                                   
+                 
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
