@@ -15,7 +15,15 @@ namespace Core.Controllers
     [Authorize]
     public class PatientDashboardController : Controller
     {
-        // GET: /<controller>/
+        [Route("queue/{code}")]
+        public IActionResult Queue(string code, HomeQueueViewModel model, PatientService svc)
+        {
+            model.queue = svc.GetQueue(code);
+            model.pq = svc.GetPatientQueues(model.queue);
+
+            return View(model);
+        }
+
         [Route("triage/{code}/{idnt}")]
         public IActionResult Triage(string code, int idnt, PatientDashboardTriageViewModel model, PatientService service)
         {

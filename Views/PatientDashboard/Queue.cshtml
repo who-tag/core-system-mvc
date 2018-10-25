@@ -63,10 +63,12 @@
                 <th>AGE</th>
                 <th>DOCTOR</th>
                 <th>NOTES</th>
+                <th></th>
             </tr>
         </thead>
         <tfoot>
             <tr>
+                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -87,6 +89,7 @@
                     <td>@q.Patient.Person.GetAgeInyears()</td>
                     <td>@q.Provider.Name</td>
                     <td>@q.Notes</td>
+                    <td><i class="material-icons red-text">delete_forever</i></td>
                 </tr>
             }
         </tbody>
