@@ -162,6 +162,8 @@
     <Content Remove="Views\Products\FuelList.cshtml" />
     <Content Remove="Views\Purchases\FuelPurchaseLedger.cshtml" />
     <Content Remove="Views\Home\Contact.cshtml" />
+    <Content Remove="wwwroot\js\scripts\registration-new-script.js" />
+    <Content Remove="wwwroot\js\registration-new-script.js" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="wwwroot\js\custom-reports-index-script.js" />
@@ -303,6 +305,7 @@
     <None Include="wwwroot\images\gallary\7.png" />
     <None Include="wwwroot\images\gallary\8.png" />
     <None Include="wwwroot\images\gallary\9.png" />
+    <None Include="wwwroot\js\registration-new-script.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\js\scripts\" />

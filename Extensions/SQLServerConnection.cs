@@ -23,14 +23,14 @@ namespace Core.Extensions
             }
         }
 
-        public Int64 SqlServerUpdate(string SqlString)
+        public int SqlServerUpdate(string SqlString)
         {
             try
             {
                 SqlCommand command = new SqlCommand(SqlString, conn);
                 command.Connection.Open();
 
-                return Convert.ToInt64(command.ExecuteScalar());
+                return Convert.ToInt16(command.ExecuteScalar());
             }
             catch (Exception)
             {
