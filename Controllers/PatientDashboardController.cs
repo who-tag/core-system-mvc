@@ -16,7 +16,7 @@ namespace Core.Controllers
     public class PatientDashboardController : Controller
     {
         [Route("queue/{code}")]
-        public IActionResult Queue(string code, HomeQueueViewModel model, PatientService svc)
+        public IActionResult Queue(string code, PatientDashboardQueueViewModel model, PatientService svc)
         {
             model.queue = svc.GetQueue(code);
             model.pq = svc.GetPatientQueues(model.queue);

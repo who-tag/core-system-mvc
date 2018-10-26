@@ -317,6 +317,7 @@
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Registration\" />
     <Folder Include="Views\PatientDashboard\" />
+    <Folder Include="Views\Billing\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Stations\Index.cshtml.cs" />
