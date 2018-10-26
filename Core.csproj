@@ -316,6 +316,7 @@
     <Folder Include="ViewModel\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Registration\" />
+    <Folder Include="Views\PatientDashboard\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Views\Stations\Index.cshtml.cs" />

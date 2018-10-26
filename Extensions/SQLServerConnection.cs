@@ -5,7 +5,7 @@ namespace Core.Extensions
 {
     public class SqlServerConnection
     {
-        private static String sConn = "Data Source=192.168.99.100;Initial Catalog=who-app;User ID=ct;Password=ct-2011;Max Pool Size=200;";
+        private static String sConn = "Data Source=192.168.0.100;Initial Catalog=who-app;User ID=ct;Password=ct-2011;Max Pool Size=200;";
         private readonly SqlConnection conn = new SqlConnection(sConn);
         private SqlCommand comm = new SqlCommand();
 

@@ -1,0 +1,97 @@
+﻿@model Core.ViewModel.HomeQueueViewModel;
+
+@{
+    ViewData["Title"] = Model.queue.Name;
+}
+
+<link rel="stylesheet" href="~/lib/data-tables/css/jquery.dataTables.min.css" />
+<script src="~/lib/data-tables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"> 
+    jq(function() {
+        jq('#queue-table').DataTable({
+            "displayLength": 25,
+        });
+
+        jq('#queue-table tr').click(function(){
+            window.location.href = '/@Model.queue.Route/@Model.queue.Code/' + jq(this).data('idnt');
+        });
+
+    });
+</script>
+
+<style>
+    #queue-table_length {
+        display: none;
+    }
+    #queue-table_filter {
+        text-align: left;
+        margin-top: 10px;
+    }
+    #queue-table_filter label input {
+        padding: 0px;
+        height: 1.9rem;
+        margin: 0;
+    }
+    #queue-table, 
+    #queue-table th, 
+    #queue-table td {
+        border-radius: 0px;
+    }
+    #queue-table tbody tr{
+        cursor: pointer;
+    }
+    #queue-title {
+        display: inline-block;
+        margin-bottom: -60px;
+        float: left;
+        margin-top: 15px;
+    }
+</style>
+
+
+<div class="col s12">
+    <div id="queue-title">
+        <h4 class="zero-margin deep-orange-text">@Model.queue.Name.ToUpper()</h4>
+    </div>
+    <table id="queue-table" class="responsive-table display stripped" cellspacing="0">
+        <thead class="who-color white-text">
+            <tr>
+                <th>DATE</th>
+                <th>TIME</th>
+                <th>PATIENT</th>
+                <th>GENDER</th>
+                <th>AGE</th>
+                <th>DOCTOR</th>
+                <th>NOTES</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var q in Model.pq)
+            {
+                <tr data-idnt="@q.Id">
+                    <td>@q.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@q.Time.ToString(@"hh\:mm")</td>
+                    <td>@q.Patient.Person.Name.ToUpper()</td>
+                    <td>@q.Patient.Person.Gender</td>
+                    <td>@q.Patient.Person.GetAgeInyears()</td>
+                    <td>@q.Provider.Name</td>
+                    <td>@q.Notes</td>
+                    <td><i class="material-icons red-text">delete_forever</i></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

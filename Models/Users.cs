@@ -28,5 +28,20 @@ namespace Core.Models
 
             Message = "";
         }
+
+        public Users(Int64 idnt)
+        {
+            Id = idnt;
+            Name = "";
+            Email = "";
+            Username = "";
+            Password = "";
+            Enabled = true;
+            ToChange = false;
+            AdminLevel = 0;
+            AccessLevel = "";
+
+            Message = "";
+        }
     }
 }

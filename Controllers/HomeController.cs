@@ -15,6 +15,7 @@ namespace Core.Controllers
         {
             return View();
         }
+
         [Route("programs/all-programs")]
         public IActionResult Programs()
         {

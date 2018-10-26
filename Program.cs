@@ -20,6 +20,6 @@ namespace Core
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
-                   .UseUrls("http://*:8002");
+                   .UseUrls("http://*:8001");
     }
 }
