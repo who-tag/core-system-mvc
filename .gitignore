@@ -6,7 +6,8 @@
 [Bb]in/
 packages/
 TestResults/
-
+Extensions/SQLServerConnection.cs
+Program.cs
 # globs
 Makefile.in
 *.DS_Store
