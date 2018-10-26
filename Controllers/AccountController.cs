@@ -83,7 +83,7 @@ namespace Core.Controllers
                     new ClaimsPrincipal(claimsIdentity),
                     authProperties);
 
-                return LocalRedirect("/");
+                return LocalRedirect("/programs/all-programs");
             }
 
             return View(model);

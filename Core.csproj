@@ -169,6 +169,8 @@
     <None Remove="wwwroot\js\custom-reports-index-script.js" />
     <None Remove="Views\Purchases\.DS_Store" />
     <None Remove="Views\Stations\.DS_Store" />
+    <None Remove="wwwroot\images\icons\comm.jpg" />
+    <None Remove="wwwroot\images\icons\comm1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="wwwroot\css\materialize.css" />
