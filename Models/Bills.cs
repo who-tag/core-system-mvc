@@ -7,6 +7,7 @@ namespace Core.Models
     {
         public int Id { get; set; }
         public int Flag { get; set; }
+        public int Void { get; set; }
         public DateTime Date { get; set; }
         public TimeSpan Time { get; set; }
         public Patient Patient { get; set; }
@@ -18,6 +19,7 @@ namespace Core.Models
         {
             Id = 0;
             Flag = 0;
+            Void = 0;
             Date = DateTime.Now.Date;
             Time = DateTime.Now.TimeOfDay;
 
@@ -31,6 +33,11 @@ namespace Core.Models
         public Bills(int idnt)
         {
             Id = idnt;
+            Flag = 0;
+            Void = 0;
+            Date = DateTime.Now.Date;
+            Time = DateTime.Now.TimeOfDay;
+
             Patient = new Patient();
 
             Cost = 0;

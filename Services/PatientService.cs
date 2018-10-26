@@ -86,19 +86,23 @@ namespace Core.Services
             if (dr.HasRows) {
                 while (dr.Read())
                 {
-                    PatientQueue pq = new PatientQueue();
-                    pq.Id = Convert.ToInt16(dr[0]);
-                    pq.Queue = q;
-                    pq.Date = Convert.ToDateTime(dr[2]);
-                    pq.Time = TimeSpan.Parse(dr[3].ToString());
-                    pq.Priority = Convert.ToInt16(dr[4]);
-                    pq.Seen = Convert.ToInt16(dr[5]);
-                    pq.Notes = dr[6].ToString();
+                    PatientQueue pq = new PatientQueue
+                    {
+                        Id = Convert.ToInt16(dr[0]),
+                        Queue = q,
+                        Date = Convert.ToDateTime(dr[2]),
+                        Time = TimeSpan.Parse(dr[3].ToString()),
+                        Priority = Convert.ToInt16(dr[4]),
+                        Seen = Convert.ToInt16(dr[5]),
+                        Notes = dr[6].ToString()
+                    };
+
                     pq.Patient.Id = Convert.ToInt16(dr[7]);
                     pq.Patient.Person.Id = Convert.ToInt16(dr[8]);
                     pq.Patient.Person.Name = dr[9].ToString();
                     pq.Patient.Person.DoB = Convert.ToDateTime(dr[10]);
                     pq.Patient.Person.Gender = dr[11].ToString();
+
                     pq.Bill.Id = Convert.ToInt16(dr[12]);
                     pq.Bill.Cost = Convert.ToDouble(dr[13]);
                     pq.Bill.Amount = Convert.ToDouble(dr[14]);

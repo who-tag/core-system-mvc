@@ -4,12 +4,12 @@ using Core.Models;
 
 namespace Core.ViewModel
 {
-    public class HomeQueueViewModel
+    public class PatientDashboardQueueViewModel
     {
         public Queue queue { get; set; }
         public List<PatientQueue> pq { get; set; }
 
-        public HomeQueueViewModel()
+        public PatientDashboardQueueViewModel()
         {
             queue = new Queue();
             pq = new List<PatientQueue>();

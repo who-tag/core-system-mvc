@@ -1,24 +1,22 @@
-﻿@model Core.ViewModel.PatientDashboardQueueViewModel;
+﻿@model Core.ViewModel.BillingCashierViewModel;
 
 @{
-    ViewData["Title"] = Model.queue.Name;
+    ViewData["Title"] = "Cashier";
 }
 
 <link rel="stylesheet" href="~/lib/data-tables/css/jquery.dataTables.min.css" />
 <script src="~/lib/data-tables/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript"> 
+<script type="text/javascript">
     jq(function() {
         jq('#queue-table').DataTable({
-            "displayLength": 25,
+            "displayLength": 30,
         });
 
-        jq('#queue-table tr').click(function(){
-            window.location.href = '/@Model.queue.Route/@Model.queue.Code/' + jq(this).data('idnt');
+        jq('#queue-table tr').click(function() {
+            //Opens Dialog to Process
         });
-
     });
 </script>
-
 <style>
     #queue-table_length {
         display: none;
@@ -32,12 +30,12 @@
         height: 1.9rem;
         margin: 0;
     }
-    #queue-table, 
-    #queue-table th, 
+    #queue-table,
+    #queue-table th,
     #queue-table td {
         border-radius: 0px;
     }
-    #queue-table tbody tr{
+    #queue-table tbody tr {
         cursor: pointer;
     }
     #queue-title {
@@ -48,10 +46,9 @@
     }
 </style>
 
-
 <div class="col s12">
     <div id="queue-title">
-        <h4 class="zero-margin deep-orange-text">@Model.queue.Name.ToUpper()</h4>
+        <h4 class="zero-margin deep-orange-text">BILLING CASHIER</h4>
     </div>
     <table id="queue-table" class="responsive-table display stripped" cellspacing="0">
         <thead class="who-color white-text">
@@ -61,7 +58,7 @@
                 <th>PATIENT</th>
                 <th>GENDER</th>
                 <th>AGE</th>
-                <th>DOCTOR</th>
+                <th>AMOUNT</th>
                 <th>NOTES</th>
                 <th></th>
             </tr>
@@ -79,16 +76,16 @@
             </tr>
         </tfoot>
         <tbody>
-            @foreach (var q in Model.pq)
+            @foreach (var bill in Model. bills)
             {
-                <tr data-idnt="@q.Id">
-                    <td>@q.Date.ToString("dd/MM/yyyy")</td>
-                    <td>@q.Time.ToString(@"hh\:mm")</td>
-                    <td>@q.Patient.Person.Name.ToUpper()</td>
-                    <td>@q.Patient.Person.Gender</td>
-                    <td>@q.Patient.Person.GetAgeInyears()</td>
-                    <td>@q.Provider.Name</td>
-                    <td>@q.Notes</td>
+                <tr data-idnt="@bill.Id">
+                    <td>@bill.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@bill.Time.ToString(@"hh\:mm")</td>
+                    <td>@bill.Patient.Person.Name.ToUpper()</td>
+                    <td>@bill.Patient.Person.Gender</td>
+                    <td>@bill.Patient.Person.GetAgeInyears()</td>
+                    <td>@string.Format("{0:N}", bill.Amount)</td>
+                    <td>@bill.Notes</td>
                     <td><i class="material-icons red-text">delete_forever</i></td>
                 </tr>
             }
