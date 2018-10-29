@@ -20,9 +20,9 @@ namespace Core.Controllers
         }
 
         [Route("accounts/assets")]
-        public IActionResult Assets(BillingCashierViewModel model, BillingService service)
+        public IActionResult Assets(BillingAssetsViewModel model, BillingService service)
         {
-            model.bills = service.GetBills(new List<int>(new int[] { 0 }), null);
+            model.Assets = service.GetAssets();
             return View(model);
         }
 

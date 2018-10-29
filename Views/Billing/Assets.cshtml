@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Core.ViewModel.BillingAssetsViewModel;
+
+@{
     ViewData["Title"] = "Assets";
 }
 
@@ -81,20 +83,23 @@
             </tr>
         </tfoot>
         <tbody>
-            <tr data-idnt="q.Id">
-                <td>xx</td>
-                <td>xx</td>
-                <td>xx</td>
-                <td>xx</td>
-                <td>xx</td>
-                <td>xx</td>
-                <td>xx</td>
-                <td>xx</td>
+            @foreach (var asset in Model.Assets)
+            {
+            <tr data-idnt="@asset.Id">
+                <td>@asset.Code</td>
+                <td>@asset.Category.Name</td>
+                <td>@asset.Description</td>
+                <td>@asset.AllocatedTo</td>
+                <td>@asset.PurchaseDate.ToString("dd/MM/yyyy")</td>
+                <td>@asset.PurchaseAmount</td>
+                <td>N/A</td>
+                <td>&mdash;</td>
                 <td>
                     <i class="material-icons blue-text">border_color</i>
                     <i class="material-icons red-text">delete_forever</i>
                 </td>
             </tr>
+            }
         </tbody>
     </table>
 </div>

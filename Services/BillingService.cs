@@ -206,6 +206,52 @@ namespace Core.Services
             return items;
         }
 
+        public List<Assets> GetAssets(Boolean IncludeVoid = false)
+        {
+            List<Assets> assets = new List<Assets>();
+            string additionalQuery = "WHERE at_void=0";
+            if (IncludeVoid){
+                additionalQuery = "";
+            }
+
+            SqlServerConnection conn = new SqlServerConnection();
+            SqlDataReader dr = conn.SqlServerConnect("SELECT at_idnt, at_void, at_code, at_description, at_purchase_date, at_purchase_amount, at_purchase_currency, at_manufacture_company, at_manufacure_date, at_supplier_supplier, at_supplier_delivery_number, at_allocation, at_notes, ac_idnt, ac_name, ac_description, as_idnt, as_name, as_description FROM Assets INNER JOIN AssetsCategory ON at_category=ac_idnt INNER JOIN AssetsStatus ON at_status=as_idnt " + additionalQuery + " ORDER BY at_code");
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    Assets asset = new Assets
+                    {
+                        Id = Convert.ToInt16(dr[0]),
+                        Void = Convert.ToInt16(dr[1]),
+                        Code = dr[2].ToString(),
+                        Description = dr[3].ToString(),
+                        PurchaseDate = Convert.ToDateTime(dr[4]),
+                        PurchaseAmount = Convert.ToDouble(dr[5]),
+                        PurchaseCurrency = dr[6].ToString(),
+                        ManufactureCompany = dr[7].ToString(),
+                        ManufactureDate = Convert.ToDateTime(dr[8]),
+                        Supplier = dr[9].ToString(),
+                        DeliveryNumber = dr[10].ToString(),
+                        AllocatedTo = dr[11].ToString(),
+                        Notes = dr[12].ToString()
+                    };
+
+                    asset.Category.Id = Convert.ToInt16(dr[13]);
+                    asset.Category.Name = dr[14].ToString();
+                    asset.Category.Description = dr[15].ToString();
+
+                    asset.Status.Id = Convert.ToInt16(dr[16]);
+                    asset.Status.Name = dr[17].ToString();
+                    asset.Status.Description = dr[18].ToString();
+
+                    assets.Add(asset);
+                }
+            }
+
+            return assets;
+        }
+
         /*Data Writer*/
         public Bills SaveBills(Bills bill){
             SqlServerConnection conn = new SqlServerConnection();
