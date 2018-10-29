@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Assets";
+}
+
+<script src="~/lib/data-tables/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">jq(function() {
+        jq('#queue-table').DataTable({
+            "displayLength": 25,
+        });
+
+        jq('#queue-table tr').click(function() {
+        });
+
+});</script>
+
+<link rel="stylesheet" href="~/lib/data-tables/css/jquery.dataTables.min.css" />
+<style>
+    #queue-table_length {
+        display: none;
+    }
+
+    #queue-table_filter {
+        text-align: left;
+        margin-top: 10px;
+    }
+
+        #queue-table_filter label input {
+            padding: 0px;
+            height: 1.9rem;
+            margin: 0;
+        }
+
+    #queue-table,
+    #queue-table th,
+    #queue-table td {
+        border-radius: 0px;
+    }
+
+        #queue-table tbody tr {
+            cursor: pointer;
+        }
+
+    #queue-title {
+        display: inline-block;
+        margin-bottom: -60px;
+        float: left;
+        margin-top: 15px;
+    }
+</style>
+
+
+<div class="col s12">
+    <div id="queue-title">
+        <h4 class="zero-margin deep-orange-text">ASSET MANAGER</h4>
+    </div>
+    <table id="queue-table" class="responsive-table display stripped" cellspacing="0">
+        <thead class="who-color white-text">
+            <tr>
+                <th>ASSET.NO</th>
+                <th>CAGEGORY</th>
+                <th>DESCRIPTION</th>
+                <th>ASSIGNED.TO</th>
+                <th>ACQUIRED</th>
+                <th>COST</th>
+                <th>RETIRED</th>
+                <th>PROCEEDS</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr data-idnt="q.Id">
+                <td>xx</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td>xx</td>
+                <td>
+                    <i class="material-icons blue-text">border_color</i>
+                    <i class="material-icons red-text">delete_forever</i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -19,6 +19,13 @@ namespace Core.Controllers
             return View(model);
         }
 
+        [Route("accounts/assets")]
+        public IActionResult Assets(BillingCashierViewModel model, BillingService service)
+        {
+            model.bills = service.GetBills(new List<int>(new int[] { 0 }), null);
+            return View(model);
+        }
+
         [AllowAnonymous]
         public JsonResult GetBillItems(int idnt, BillingService service)
         {
