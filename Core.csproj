@@ -10,6 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="wwwroot\js\registration-new-script.js" />
+    <None Remove="wwwroot\js\vendor.perfect-scrollbar.js" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="wwwroot\css\materialize.css" />
     <None Include="wwwroot\css\materialize.style.css" />
     <None Include="wwwroot\css\materialize.custom.css" />
@@ -87,7 +91,6 @@
     <None Include="wwwroot\fonts\roboto\Roboto-Thin.woff" />
     <None Include="wwwroot\fonts\roboto\Roboto-Thin.woff2" />
     <None Include="Views\Shared\_RightSideBarNav.cshtml" />
-    <None Include="wwwroot\js\vendor.perfect-scrollbar.js" />
     <None Include="wwwroot\js\vendor.chart-script.js" />
     <None Include="wwwroot\js\vendor.chart.min.js" />
     <None Include="wwwroot\css\vendor.fullcalendar.css" />
@@ -144,7 +147,6 @@
     <None Include="wwwroot\images\gallary\7.png" />
     <None Include="wwwroot\images\gallary\8.png" />
     <None Include="wwwroot\images\gallary\9.png" />
-    <None Include="wwwroot\js\registration-new-script.js" />
   </ItemGroup>
   
   <ItemGroup>
@@ -158,5 +160,15 @@
     <Folder Include="Views\PatientDashboard\" />
     <Folder Include="Views\Billing\" />
     <Folder Include="Views\Stores\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\PatientDashboard\OpdClinic.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\js\additional-methods.min.js" />
+    <Content Remove="wwwroot\js\customers-index-script.js" />
+    <Content Remove="wwwroot\js\custom-script.js" />
+    <Content Remove="wwwroot\js\plugins.js" />
+    <Content Remove="wwwroot\js\vendor.sparkline.min.js" />
   </ItemGroup>
 </Project>

@@ -627,11 +627,11 @@ ConfirmationSectionModel.prototype.select = function() {
         })
 
         if (!hasData) {
-            this.questions[0].confirm.disable();
+            //this.questions[0].confirm.disable();
             this.element.find(".error").show();
         }
         else {
-            this.questions[0].confirm.enable();
+            //this.questions[0].confirm.enable();
             this.element.find(".error").hide();
         }
 

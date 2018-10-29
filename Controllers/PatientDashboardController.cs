@@ -40,6 +40,12 @@ namespace Core.Controllers
             return View(model);
         }
 
+        [Route("clinic/{code}/{idnt}")]
+        public IActionResult OpdClinic(string code, int idnt, PatientDashboardOpdClinicViewModel model, PatientService service)
+        {
+            return View(model);
+        }
+
         [HttpPost]
         public IActionResult PostTriage(PatientDashboardTriageViewModel model)
         {
