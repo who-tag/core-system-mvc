@@ -3,21 +3,18 @@ using Core.Models;
 
 namespace Core.ViewModel
 {
-    public class PatientDashboardTriageViewModel
+    public class PatientDashboardOpdClinicViewModel
     {
         public Queue queue { get; set; }
         public PatientQueue pq { get; set; }
-        public Triage triage { get; set; }
+        public ClinicalNotes notes { get; set; }
 
-        public String lmp { get; set; }
-
-        public PatientDashboardTriageViewModel()
+        public PatientDashboardOpdClinicViewModel()
         {
             queue = new Queue();
             pq = new PatientQueue();
-            triage = new Triage();
 
-            lmp = "";
+            notes = new ClinicalNotes();
         }
     }
 }

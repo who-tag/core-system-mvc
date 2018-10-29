@@ -81,8 +81,24 @@
                 }
             });
         });
-        function GetStationsReconciles() {
-        }
+
+        jq('#agree-btn').click(function() {
+            jq.ajax({
+                dataType: "json",
+                url: '/Billing/FlagBill',
+                data: {
+                    "idnt": idx,
+                    "flag": 1
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                },
+                complete: function() {
+                    window.location.href = '/accounts/billing/cashier';
+                }
+            });
+        });
 });</script>
 <style>
     #queue-table_length {
@@ -210,6 +226,6 @@
     </div>
     <div class="modal-footer">
         <a class="modal-action modal-close waves-effect waves-red btn-flat ">Disagree</a>
-        <a class="waves-effect waves-green btn-flat ">Agree</a>
+        <a class="waves-effect waves-green btn-flat " id="agree-btn">Agree</a>
     </div>
 </div>

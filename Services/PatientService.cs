@@ -116,7 +116,10 @@ namespace Core.Services
             return queues;
         }
 
-        /*Writers*/
+        /*
+         * Data
+         * Writers
+        */
         public Patient SavePatient(Patient patient)
         {
             SqlServerConnection conn = new SqlServerConnection();
@@ -152,6 +155,10 @@ namespace Core.Services
             queue.Id = conn.SqlServerUpdate("UPDATE PatientQueue SET pq_provider=" + queue.Provider.Id + " OUTPUT INSERTED.pq_idnt WHERE pq_idnt=" + queue.Id);
 
             return queue;
+        }
+
+        public Triage SaveTriage(Triage triage){
+            return triage;
         }
     }
 }

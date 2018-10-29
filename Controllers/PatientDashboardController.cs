@@ -15,6 +15,9 @@ namespace Core.Controllers
     [Authorize]
     public class PatientDashboardController : Controller
     {
+        [BindProperty]
+        public PatientDashboardTriageViewModel Input { get; set; }
+
         [Route("queue/{code}")]
         public IActionResult Queue(string code, PatientDashboardQueueViewModel model, PatientService svc)
         {
@@ -32,7 +35,25 @@ namespace Core.Controllers
             model.pq.Provider = new Users(1);
             model.pq.UpdateProvider();
 
+            model.triage = new Triage();
+
             return View(model);
+        }
+
+        [Route("clinic/{code}/{idnt}")]
+        public IActionResult OpdClinic(string code, int idnt, PatientDashboardOpdClinicViewModel model, PatientService service)
+        {
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult PostTriage(PatientDashboardTriageViewModel model)
+        {
+            if (!string.IsNullOrWhiteSpace(Input.lmp)){
+                Input.triage.LMP = DateTime.Parse(Input.lmp);
+            }
+
+            return LocalRedirect("/patient-registration/new-patient");
         }
     }
 }
