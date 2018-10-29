@@ -21,6 +21,17 @@ namespace Core.Controllers
         {
             return View();
         }
+        [Route("programs/surveilance/programs/surveilance")]
+        public IActionResult Surveilance()
+        {
+            return View();
+        }
+
+        [Route("programs/surveilance/filter")]
+        public IActionResult Filter()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

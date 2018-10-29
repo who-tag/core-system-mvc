@@ -1,3 +1,117 @@
 ﻿@{
     ViewData["Title"] = "Triage";
 }
+<style>
+    #projects-collection .collection-header {
+        font-size: 1.24rem;
+        font-weight: 500;
+    }
+
+    #projects-collections .collection-item.avatar {
+        height: auto;
+        padding-top: 22px;
+    }
+
+    .collection .collection-item.avatar {
+        min-height: 50px;
+    }
+
+    .btn.waves-effect {
+        margin-left: 43px;
+        margin-bottom: 20px;
+    }
+</style>
+<script type="text/javascript" src="~/js/registration-new-script.js"></script>
+<div>
+    <ul style="background-color:white" id="projects-collection" class="collection z-depth-1">
+        <li class="collection-item avatar">
+            <i class="material-icons red accent-2 circle">person_add</i>
+            <h6 style="padding-top: 12px;" class="collection-header m-0 cyan-text">Vital Summary </h6>
+            <span class="right"></span>
+            <br>
+        </li>
+
+        <li class="collection-item">
+            <div class="input-field col s6">
+                <i class="material-icons prefix">computer</i>
+                <input type="text" id="autocomplete-input" class="autocomplete">
+                <label for="icon_prefix">Temperature</label>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">dvr</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Blood Pressure (Systolic)</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">border_color</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Blood Pressure (Diastolic)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">event_note</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Respiratory Rate</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">exposure</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Oxygen Saturation</label>
+                </div>
+            </div>
+
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons red accent-2 circle">local_library</i>
+            <h6 style="padding-top: 12px;" class="collection-header m-0 cyan-text">Body Mass Index </h6>
+            <span class="right"></span>
+            <br>
+        </li>
+        <li class="collection-item">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">next_week</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Weight </label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">receipt</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Height</label>
+                </div>
+            </div>
+        </li>
+        <li class="collection-item avatar">
+            <i class="material-icons red accent-2 circle">
+                radio_button_checked
+            </i>
+            <h6 style="padding-top: 12px;" class="collection-header m-0 cyan-text">Circumferences </h6>
+            <span class="right"></span>
+            <br>
+        </li>
+        <li class="collection-item">
+            <div class="row">
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">room_service</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">M.U.A.C </label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">streetview</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Chest</label>
+                </div>
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">widgets</i>
+                    <input type="text" class="autocomplete">
+                    <label for="icon_prefix">Abdominal</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light gradient-45deg-purple-deep-orange">Register</button>
+        </li>
+
+    </ul>
+
+</div>

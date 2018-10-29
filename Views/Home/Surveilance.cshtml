@@ -1,0 +1,858 @@
+﻿@{
+    ViewData["Title"] = "Surveilance";
+}
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>A simple map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v3.1.1/mapbox.css' rel='stylesheet' />
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.49.0/mapbox-gl.css' rel='stylesheet' />
+    <script type="text/javascript" src="~/js/registration-new-script.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        #projects-collection .collection-header {
+            font-size: 1.24rem;
+            font-weight: 500;
+        }
+
+        #projects-collections .collection-item.avatar {
+            height: auto;
+            padding-top: 22px;
+        }
+
+        .collection .collection-item.avatar {
+            min-height: 50px;
+        }
+
+        .btn.waves-effect {
+            margin-left: 43px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id='map'></div>
+    <script>
+   var geojson = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.6682,
+          -4.0355
+        ]
+      },
+      "properties": {
+        "id": 1,
+        "title": "County",
+        "description": "Mombasa"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.4606,
+          -4.1816
+        ]
+      },
+      "properties": {
+        "id": 2,
+        "title": "County",
+        "description": "KWALE"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.9093,
+          -3.5107
+        ]
+      },
+      "properties": {
+        "id": 3,
+        "title": "County",
+        "description": "KILIFI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.4424,
+          -1.5868
+        ]
+      },
+      "properties": {
+        "id": 4,
+        "title": "County",
+        "description": "TANA RIVER"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.9006,
+          -2.2696
+        ]
+      },
+      "properties": {
+        "id": 5,
+        "title": "County",
+        "description": "LAMU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5659,
+          -3.3854
+        ]
+      },
+      "properties": {
+        "id": 6,
+        "title": "County",
+        "description": "TAITA TAVETA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.6461,
+          -0.4532
+        ]
+      },
+      "properties": {
+        "id": 7,
+        "title": "County",
+        "description": "GARISSA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.3089,
+          1.956
+        ]
+      },
+      "properties": {
+        "id": 8,
+        "title": "County",
+        "description": "Wajir"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.8551,
+          3.5356
+        ]
+      },
+      "properties": {
+        "id": 9,
+        "title": "County",
+        "description": "Mandera"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9943,
+          2.3355
+        ]
+      },
+      "properties": {
+        "id": 10,
+        "title": "County",
+        "description": "MARSABIT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.5833,
+          0.3556
+        ]
+      },
+      "properties": {
+        "id": 11,
+        "title": "County",
+        "description": "ISIOLO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6456,
+          0.0515
+        ]
+      },
+      "properties": {
+        "id": 12,
+        "title": "County",
+        "description": "MERU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9782,
+          -0.157
+        ]
+      },
+      "properties": {
+        "id": 13,
+        "title": "County",
+        "description": "THARAKA-NITHI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.4596,
+          -0.5388
+        ]
+      },
+      "properties": {
+        "id": 14,
+        "title": "County",
+        "description": "EMBU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9952,
+          -1.3751
+        ]
+      },
+      "properties": {
+        "id": 15,
+        "title": "County",
+        "description": "KITUI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.2634,
+          -1.5177
+        ]
+      },
+      "properties": {
+        "id": 16,
+        "title": "County",
+        "description": "MACHAKOS"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.6311,
+          -1.7865
+        ]
+      },
+      "properties": {
+        "id": 17,
+        "title": "County",
+        "description": "MAKUENI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.4895,
+          -0.3994
+        ]
+      },
+      "properties": {
+        "id": 18,
+        "title": "County",
+        "description": "NYANDARUA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.958,
+          -0.4371
+        ]
+      },
+      "properties": {
+        "id": 19,
+        "title": "County",
+        "description": "NYERI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3255,
+          -0.5732
+        ]
+      },
+      "properties": {
+        "id": 20,
+        "title": "County",
+        "description": "KIRINYAGA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1322,
+          -0.7957
+        ]
+      },
+      "properties": {
+        "id": 21,
+        "title": "County",
+        "description": "MURANG`A"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.9665,
+          -1.1462
+        ]
+      },
+      "properties": {
+        "id": 22,
+        "title": "County",
+        "description": "KIAMBU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.5988,
+          3.1184
+        ]
+      },
+      "properties": {
+        "id": 23,
+        "title": "County",
+        "description": "TURKANA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2854,
+          1.5924
+        ]
+      },
+      "properties": {
+        "id": 24,
+        "title": "County",
+        "description": "WEST POKOT"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1768,
+          1.2571
+        ]
+      },
+      "properties": {
+        "id": 25,
+        "title": "County",
+        "description": "SAMBURU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.0015,
+          1.0219
+        ]
+      },
+      "properties": {
+        "id": 26,
+        "title": "County",
+        "description": "TRANS NZOIA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2697,
+          0.5143
+        ]
+      },
+      "properties": {
+        "id": 27,
+        "title": "County",
+        "description": "UASIN GISHU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.508,
+          0.6726
+        ]
+      },
+      "properties": {
+        "id": 28,
+        "title": "County",
+        "description": "ELEGEYO-MARAKWET"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.1777,
+          0.1036
+        ]
+      },
+      "properties": {
+        "id": 29,
+        "title": "County",
+        "description": "NANDI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.7412,
+          0.4897
+        ]
+      },
+      "properties": {
+        "id": 30,
+        "title": "County",
+        "description": "BARINGO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.1588,
+          0.397
+        ]
+      },
+      "properties": {
+        "id": 31,
+        "title": "County",
+        "description": "LAIKIPIA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.08,
+          -0.3031
+        ]
+      },
+      "properties": {
+        "id": 32,
+        "title": "County",
+        "description": "NAKURU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.8771,
+          -1.0875
+        ]
+      },
+      "properties": {
+        "id": 33,
+        "title": "County",
+        "description": "NAROK"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.782,
+          -2.0981
+        ]
+      },
+      "properties": {
+        "id": 34,
+        "title": "County",
+        "description": "KAJIADO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.2863,
+          -0.3689
+        ]
+      },
+      "properties": {
+        "id": 35,
+        "title": "County",
+        "description": "KERICHO"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3391,
+          -0.7856
+        ]
+      },
+      "properties": {
+        "id": 36,
+        "title": "County",
+        "description": "BOMET"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7519,
+          0.2827
+        ]
+      },
+      "properties": {
+        "id": 37,
+        "title": "County",
+        "description": "KAKAMEGA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7229,
+          0.0816
+        ]
+      },
+      "properties": {
+        "id": 38,
+        "title": "County",
+        "description": "VIHIGA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.5584,
+          0.5695
+        ]
+      },
+      "properties": {
+        "id": 39,
+        "title": "County",
+        "description": "BUNGOMA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.1115,
+          0.4608
+        ]
+      },
+      "properties": {
+        "id": 40,
+        "title": "County",
+        "description": "BUSIA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.2747,
+          -0.0998
+        ]
+      },
+      "properties": {
+        "id": 41,
+        "title": "County",
+        "description": "SIAYA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.768,
+          -0.0917
+        ]
+      },
+      "properties": {
+        "id": 42,
+        "title": "County",
+        "description": "KISUMU"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4531,
+          -0.535
+        ]
+      },
+      "properties": {
+        "id": 43,
+        "title": "County",
+        "description": "HOMA BAY"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.4706,
+          -1.0689
+        ]
+      },
+      "properties": {
+        "id": 44,
+        "title": "County",
+        "description": "MIGORI"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7796,
+          -0.6773
+        ]
+      },
+      "properties": {
+        "id": 45,
+        "title": "County",
+        "description": "KISII"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.933,
+          -0.5664
+        ]
+      },
+      "properties": {
+        "id": 46,
+        "title": "County",
+        "description": "NYAMIRA"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8219,
+          -1.2921
+        ]
+      },
+      "properties": {
+        "id": 47,
+        "title": "County",
+        "description": "NAIROBI"
+      }
+    }
+  ]
+};
+
+ mapboxgl.accessToken = 'pk.eyJ1IjoiZGF2aWVtdWt1bmdpIiwiYSI6ImNqbXVhbjNwYzAwc3EzcHBjbW5vcDRoMWEifQ.4J5fIUC3XydcHasrtAt3qQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: [37.6456, 0.40815],
+        zoom: 5.4
+    });
+
+    var hoveredStateId =  null;
+
+    map.on('load', function () {
+        map.addSource("states", {
+            "type": "geojson",
+            "data": "https://raw.githubusercontent.com/mikelmaron/kenya-election-data/master/data/counties.geojson"
+        });
+
+        // The feature-state dependent fill-opacity expression will render the hover effect
+        // when a feature's hover state is set to true.
+
+        map.addLayer({
+              "id": "state-fills",
+              "type": "fill",
+              "source": "states",
+              "layout": {},
+              "paint": {
+                 "fill-color": "#dc3545",
+                 "fill-opacity": ["case",
+                      ["boolean", ["feature-state", "hover"], false],
+                     1, 0.1
+                  ]
+             }
+        });
+
+        map.addLayer({
+            "id": "state-borders",
+            "type": "line",
+           "source": "states",
+           "layout": {},
+            "paint": {
+               "line-color": "#f00",
+               "line-width": 1
+          }
+        });
+
+        // When the user moves their mouse over the state-fill layer, we'll update the
+        // feature state for the feature under the mouse.
+        map.on("mousemove", "state-fills", function(e) {
+            if (e.features.length > 0) {
+                if (hoveredStateId) {
+                    map.setFeatureState({source: 'states', id: hoveredStateId}, { hover: false});
+                }
+                hoveredStateId = e.features[0].id;
+                map.setFeatureState({source: 'states', id: hoveredStateId}, { hover: true});
+            }
+        });
+
+        // When the mouse leaves the state-fill layer, update the feature state of the
+        // previously hovered feature.
+        map.on("mouseleave", "state-fills", function() {
+            if (hoveredStateId) {
+                map.setFeatureState({source: 'states', id: hoveredStateId}, { hover: false});
+            }
+            hoveredStateId =  null;
+        });
+    });
+
+    geojson.features.forEach(function(marker) {
+      var el = document.createElement('div');
+      var popup = new mapboxgl.Popup({ offset: 25 });
+
+      el.className = 'marker';
+
+      new mapboxgl.Marker(el)
+      .setLngLat(marker.geometry.coordinates)
+      .addTo(map);
+
+      el.addEventListener('mouseover', function(e){
+         popup.setLngLat(marker.geometry.coordinates)
+         .setHTML('<h6>' + marker.properties.title + '</h6><p>' + marker.properties.description + '</p>')
+         .addTo(map);
+        e.stopPropagation();
+      });
+
+      el.addEventListener('mouseleave', function(e){
+         popup.remove();
+      });
+
+      el.addEventListener('click', () =>{
+          setTimeout(function() {
+            window.location.href = "/county/" + marker.properties.id;
+          }, 500);
+      });
+    });
+    </script>
+
+</body>
+</html>

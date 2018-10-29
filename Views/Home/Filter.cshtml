@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Filter";
+}
+<style>
+    #projects-collection .collection-header {
+        font-size: 1.24rem;
+        font-weight: 500;
+    }
+
+    #projects-collections .collection-item.avatar {
+        height: auto;
+        padding-top: 22px;
+    }
+
+    .collection .collection-item.avatar {
+        min-height: 50px;
+    }
+
+    .btn.waves-effect {
+        margin-left: 43px;
+        margin-bottom: 20px;
+    }
+</style>
+<script type="text/javascript" src="~/js/registration-new-script.js"></script>
+<div>
+    <ul style="background-color:white" id="projects-collection" class="collection z-depth-1">
+        <li class="collection-item avatar">
+            <i class="material-icons red accent-2 circle">
+                place
+            </i>
+            <h6 style="padding-top: 12px;" class="collection-header m-0 cyan-text">Surveilance Data </h6>
+            <span class="right"></span>
+            <br>
+        </li>
+        <li class="collection-item">
+            <div class="row">
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">place</i>
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Map</option>
+                        <option value="2">Graphs</option>
+                        <option value="3">Table</option>
+                    </select>
+                </div>
+            </div>
+            <a href="programs/surveilance" class="btn waves-effect waves-light gradient-45deg-purple-deep-orange">Filter</a>
+        </li>
+
+    </ul>
+</div>
