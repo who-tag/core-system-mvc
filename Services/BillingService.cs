@@ -129,6 +129,83 @@ namespace Core.Services
             return bills;
         }
 
+        public BillsItems GetBillItem(int idnt)
+        {
+            BillsItems item = null;
+
+            SqlServerConnection conn = new SqlServerConnection();
+            SqlDataReader dr = conn.SqlServerConnect("SELECT bi_idnt, bi_cost, bi_amount, bs_idnt, bs_name, bl_idnt, bl_date, bl_time, bl_flag, bl_cost, bl_amount, bl_notes, pt_idnt, ps_idnt, ps_names, ps_gender, ps_dob FROM BillsItems INNER JOIN BillableServices ON bi_item=bs_idnt INNER JOIN Bills ON bi_bill=bl_idnt INNER JOIN Patient ON bl_patient=pt_idnt INNER JOIN Person ON pt_person=ps_idnt WHERE bi_idnt=" + idnt);
+            if (dr.Read())
+            {
+                item = new BillsItems
+                {
+                    Id = Convert.ToInt16(dr[0]),
+                    Cost = Convert.ToDouble(dr[1]),
+                    Amount = Convert.ToDouble(dr[2])
+                };
+
+                item.Item.Id = Convert.ToInt16(dr[3]);
+                item.Item.Name = dr[4].ToString();
+                
+                item.Bill.Id = Convert.ToInt16(dr[5]);
+                item.Bill.Date = Convert.ToDateTime(dr[6]);
+                item.Bill.Time = TimeSpan.Parse(dr[7].ToString());
+                item.Bill.Flag = Convert.ToInt16(dr[8]);
+                item.Bill.Cost = Convert.ToDouble(dr[9]);
+                item.Bill.Amount = Convert.ToDouble(dr[10]);
+                item.Bill.Notes = dr[11].ToString();
+                
+                item.Bill.Patient.Id = Convert.ToInt16(dr[12]);
+                item.Bill.Patient.Person.Id = Convert.ToInt16(dr[13]);
+                item.Bill.Patient.Person.Name = dr[14].ToString();
+                item.Bill.Patient.Person.Gender = dr[15].ToString();
+                item.Bill.Patient.Person.DoB = Convert.ToDateTime(dr[16]);
+            }
+
+            return item;
+        }
+
+
+        public List<BillsItems> GetBillItems(Bills bill) {
+            List<BillsItems> items = new List<BillsItems>();
+
+            SqlServerConnection conn = new SqlServerConnection();
+            SqlDataReader dr = conn.SqlServerConnect("SELECT bi_idnt, bi_cost, bi_amount, bs_idnt, bs_name, bl_idnt, bl_date, bl_time, bl_flag, bl_cost, bl_amount, bl_notes, pt_idnt, ps_idnt, ps_names, ps_gender, ps_dob FROM BillsItems INNER JOIN BillableServices ON bi_item=bs_idnt INNER JOIN Bills ON bi_bill=bl_idnt INNER JOIN Patient ON bl_patient=pt_idnt INNER JOIN Person ON pt_person=ps_idnt WHERE bi_bill=" + bill.Id);
+            if (dr.HasRows)
+            {
+                while (dr.Read())
+                {
+                    BillsItems item = new BillsItems
+                    {
+                        Id = Convert.ToInt16(dr[0]),
+                        Cost = Convert.ToDouble(dr[1]),
+                        Amount = Convert.ToDouble(dr[2])
+                    };
+
+                    item.Item.Id = Convert.ToInt16(dr[3]);
+                    item.Item.Name = dr[4].ToString();
+
+                    item.Bill.Id = Convert.ToInt16(dr[5]);
+                    item.Bill.Date = Convert.ToDateTime(dr[6]);
+                    item.Bill.Time = TimeSpan.Parse(dr[7].ToString());
+                    item.Bill.Flag = Convert.ToInt16(dr[8]);
+                    item.Bill.Cost = Convert.ToDouble(dr[9]);
+                    item.Bill.Amount = Convert.ToDouble(dr[10]);
+                    item.Bill.Notes = dr[11].ToString();
+
+                    item.Bill.Patient.Id = Convert.ToInt16(dr[12]);
+                    item.Bill.Patient.Person.Id = Convert.ToInt16(dr[13]);
+                    item.Bill.Patient.Person.Name = dr[14].ToString();
+                    item.Bill.Patient.Person.Gender = dr[15].ToString();
+                    item.Bill.Patient.Person.DoB = Convert.ToDateTime(dr[16]);
+
+                    items.Add(item);
+                }
+            }
+
+            return items;
+        }
+
         /*Data Writer*/
         public Bills SaveBills(Bills bill){
             SqlServerConnection conn = new SqlServerConnection();

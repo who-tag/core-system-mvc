@@ -6,17 +6,84 @@
 
 <link rel="stylesheet" href="~/lib/data-tables/css/jquery.dataTables.min.css" />
 <script src="~/lib/data-tables/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    jq(function() {
+<script type="text/javascript">jq(function() {
+        var idx = 0;
+
+        jq('.modal').modal();
+
         jq('#queue-table').DataTable({
             "displayLength": 30,
         });
 
+        String.prototype.toAccounting = function() {
+            var str = parseFloat(this).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+
+            if (str.charAt(0) == '-') {
+                return '(' + str.substring(1, 40) + ')';
+            }
+            else {
+                return str;
+            }
+        };
+
+        String.prototype.toViewDate = function() {
+            var str = new Date(this);
+            return str.getDate() + '/' + (str.getMonth() + 1) + '/' + str.getFullYear();
+        };
+
         jq('#queue-table tr').click(function() {
-            //Opens Dialog to Process
+            idx = jq(this).data('idnt');
+
+            jq.ajax({
+                dataType: "json",
+                url: '/Billing/GetBillItems',
+                data: {
+                    "idnt": idx
+                },
+                success: function(results) {
+                    var cumm = 0.0;
+
+                    jq('#modal-table tbody').empty();
+                    jq('#modal-table tfoot').empty();
+
+                    jq('.modal-content h4').text(' BILL 00' + results[0].bill.id);
+                    jq('p .pts').text(results[0].bill.patient.person.name.toUpperCase());
+                    jq('p .dts').text(results[0].bill.date.toViewDate());
+                    jq('p .amt').text(results[0].bill.amount.toString().toAccounting());
+
+                    jq.each(results, function(i, item) {
+                        cumm += item.amount;
+
+                        var row = "<tr>";
+                        row += "<td>" + (i + 1) + ".</td>";
+                        row += "<td>" + item.item.name + "</td>";
+                        row += "<td>" + item.amount.toString().toAccounting() + "</td>";
+                        row += "</tr>";
+
+                        jq('#modal-table tbody').append(row);
+                    })
+
+                    var footr = "<tr>";
+                    footr += "<th></th>";
+                    footr += "<th></th>";
+                    footr += "<th>" + cumm.toString().toAccounting() + "</td>";
+                    footr += "</tr>";
+
+                    jq('#modal-table tfoot').append(footr);
+
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                },
+                complete: function() {
+                    jq('#paybill').modal('open');
+                }
+            });
         });
-    });
-</script>
+        function GetStationsReconciles() {
+        }
+});</script>
 <style>
     #queue-table_length {
         display: none;
@@ -43,6 +110,14 @@
         margin-bottom: -60px;
         float: left;
         margin-top: 15px;
+    }
+    .modal-content h4 {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .modal table th:last-child, 
+    .modal table td:last-child {
+        margin-right: 10px;
+        text-align: right;
     }
 </style>
 
@@ -91,4 +166,50 @@
             }
         </tbody>
     </table>
+</div>
+
+<div id="paybill" class="modal modal-fixed-footer" style="width:500px">
+    <div class="modal-content">
+        <h4> BILL 2435</h4>
+        <p class="row">
+            <span class="col-md-3">PATIENT</span>
+            <span class="col-md-9 bold-text pts">JOHN NDIANGUI (22yrs)</span>
+
+            <span class="col-md-3">DATE</span>
+            <span class="col-md-9 bold-text dts">22/10/2018</span>
+
+            <span class="col-md-3">AMOUNT</span>
+            <span class="col-md-9 bold-text amt">KES 1,500.00</span>
+        </p>
+
+        <table id="modal-table" class="bordered">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>DESCRIPTION</th>
+                    <th>AMOUNT</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>REGISTRATION FEE</td>
+                    <td>1,500.00</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>1,500.00</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-red btn-flat ">Disagree</a>
+        <a class="waves-effect waves-green btn-flat ">Agree</a>
+    </div>
 </div>

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
+using Core.Models;
 using Core.ViewModel;
 using Core.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Core.Controllers
 {
+    [Authorize]
     public class BillingController : Controller
     {
         [Route("accounts/billing/cashier")]
@@ -14,6 +17,16 @@ namespace Core.Controllers
         {
             model.bills = service.GetBills(new List<int>(new int[] { 0 }), null);
             return View(model);
+        }
+
+
+
+
+        [AllowAnonymous]
+        public JsonResult GetBillItems(int idnt, BillingService service)
+        {
+            List<BillsItems> items = service.GetBillItems(new Bills(idnt));
+            return Json(items);
         }
     }
 }
