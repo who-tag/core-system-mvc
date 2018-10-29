@@ -7,11 +7,17 @@ namespace Core.ViewModel
     {
         public Queue queue { get; set; }
         public PatientQueue pq { get; set; }
+        public Triage triage { get; set; }
+
+        public String lmp { get; set; }
 
         public PatientDashboardTriageViewModel()
         {
             queue = new Queue();
             pq = new PatientQueue();
+            triage = new Triage();
+
+            lmp = "";
         }
     }
 }

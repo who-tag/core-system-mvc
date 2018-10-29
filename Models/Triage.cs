@@ -1,13 +1,19 @@
 ﻿using System;
+using Core.Services;
+
 namespace Core.Models
 {
     public class Triage
     {
         public int Id { get; set; }
-        public int Flag { get; set; }
-        public int Void { get; set; }
 
         public Encounter Encounter { get; set; }
+        public Patient Patient { get; set; }
+        public Queue Queue { get; set; }
+        public Users Provider { get; set; }
+
+        public int Flag { get; set; }
+        public int Void { get; set; }
 
         public DateTime Start { get; set; }
         public DateTime? Ended { get; set; }
@@ -29,6 +35,8 @@ namespace Core.Models
         public Double? Chest { get; set; }
         public Double? Abdominal { get; set; }
 
+        public String Notes { get; set; }
+
         public Triage()
         {
             Id = 0;
@@ -39,15 +47,16 @@ namespace Core.Models
             Ended = null;
             LMP = null;
 
-            Weight = 0;
-            Height = 0;
-            BMI = 0;
-            Weight = 0;
+            Notes = "";
         }
 
         public Triage(int idnt) : this()
         {
             Id = idnt;
+        }
+
+        public Triage Save(){
+            return new PatientService().SaveTriage(this);
         }
     }
 }

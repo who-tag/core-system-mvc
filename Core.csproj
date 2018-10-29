@@ -150,6 +150,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\js\scripts\" />
     <Folder Include="wwwroot\fonts\" />
+    <Folder Include="wwwroot\images\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModel\" />
     <Folder Include="Views\Account\" />
