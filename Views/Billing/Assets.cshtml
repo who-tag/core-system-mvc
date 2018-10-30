@@ -6,13 +6,17 @@
 
 <script src="~/lib/data-tables/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">jq(function() {
-        jq('#queue-table').DataTable({
-            "displayLength": 25,
-        });
+    jq('.modal').modal();
 
-        jq('#queue-table tr').click(function() {
-        });
+    jq('#queue-table').DataTable({
+        "displayLength": 25,
+    });
 
+    jq('#queue-table_filter').on('click', 'i', function() {
+        jq('#add-assets').modal('open');
+    });
+
+    jq('<i class="material-icons medium blue-text">add_to_queue</i>').insertBefore(jq("#queue-table_filter label"));
 });</script>
 
 <link rel="stylesheet" href="~/lib/data-tables/css/jquery.dataTables.min.css" />
@@ -26,27 +30,34 @@
         margin-top: 10px;
     }
 
-        #queue-table_filter label input {
-            padding: 0px;
-            height: 1.9rem;
-            margin: 0;
-        }
-
+    #queue-table_filter i {
+        cursor: pointer;
+        margin: 13px 30px 0;
+        float: right;
+    }
+    #queue-table_filter label input {
+        padding: 0px;
+        height: 1.9rem;
+        margin: 0;
+    }
     #queue-table,
     #queue-table th,
     #queue-table td {
         border-radius: 0px;
     }
-
-        #queue-table tbody tr {
-            cursor: pointer;
-        }
+    #queue-table tbody tr {
+        cursor: pointer;
+    }
 
     #queue-title {
         display: inline-block;
         margin-bottom: -60px;
         float: left;
         margin-top: 15px;
+    }
+    i.medium {
+        font-size: 2.5rem;
+        z-index: 1000;
     }
 </style>
 
@@ -85,21 +96,32 @@
         <tbody>
             @foreach (var asset in Model.Assets)
             {
-            <tr data-idnt="@asset.Id">
-                <td>@asset.Code</td>
-                <td>@asset.Category.Name</td>
-                <td>@asset.Description</td>
-                <td>@asset.AllocatedTo</td>
-                <td>@asset.PurchaseDate.ToString("dd/MM/yyyy")</td>
-                <td>@asset.PurchaseAmount</td>
-                <td>N/A</td>
-                <td>&mdash;</td>
-                <td>
-                    <i class="material-icons blue-text">border_color</i>
-                    <i class="material-icons red-text">delete_forever</i>
-                </td>
-            </tr>
+                <tr data-idnt="@asset.Id">
+                    <td>@asset.Code</td>
+                    <td>@asset.Category.Name</td>
+                    <td>@asset.Description</td>
+                    <td>@asset.AllocatedTo</td>
+                    <td>@asset.PurchaseDate.ToString("dd/MM/yyyy")</td>
+                    <td>@asset.PurchaseAmount</td>
+                    <td>N/A</td>
+                    <td>&mdash;</td>
+                    <td>
+                        <i class="material-icons blue-text">border_color</i>
+                        <i class="material-icons red-text">delete_forever</i>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+</div>
+
+<div id="add-assets" class="modal modal-fixed-footer" style="width: 600px">
+    <div class="modal-content">
+        <h4> ADD ASSETS</h4>
+
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-red btn-flat ">Disagree</a>
+        <a class="waves-effect modal-close waves-green btn-flat " id="agree-btn">Agree</a>
+    </div>
 </div>
