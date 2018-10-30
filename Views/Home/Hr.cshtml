@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Hr";
+}
+<style>
+    #projects-collection .collection-header {
+        font-size: 1.24rem;
+        font-weight: 500;
+    }
+
+    #projects-collections .collection-item.avatar {
+        height: auto;
+        padding-top: 22px;
+    }
+
+    .collection .collection-item.avatar {
+        min-height: 50px;
+    }
+
+    .btn.waves-effect {
+        margin-left: 43px;
+        margin-bottom: 20px;
+    }
+</style>
+<script type="text/javascript" src="~/js/registration-new-script.js"></script>
+
+
+<div>
+
+    <ul style="background-color:white" id="projects-collection" class="collection z-depth-1">
+        <li class="collection-item avatar">
+            <i class="material-icons red accent-2 circle">recent_actors</i>
+            <h6 style="padding-top: 12px;" class="collection-header m-0 cyan-text">Human Resource Module</h6>
+            <span class="right"></span>
+            <br>
+        </li>
+        <li class="collection-item">
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a class="active" href="#test1"><strong>Staff Registration</strong></a></li>
+                        <li class="tab col s3"><a  href="#test2"><strong>Staff Performance</strong></a></li>
+
+                    </ul>
+                </div>
+                <div id="test1" class="col s12">
+                    <br />
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">filter_drama</i>Staff Informations</div>
+                            <div class="collapsible-body">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input type="text" id="autocomplete-input" class="autocomplete">
+                                        <label for="icon_prefix">Full Name</label>
+                                    </div>
+
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">assignment_ind</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Identification</label>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">wc</i>
+                                        <select>
+                                            <option value="" disabled selected>Select gender</option>
+                                            <option value="1">Male</option>
+                                            <option value="2">Female</option>
+
+                                        </select>
+                                        <label>Gender</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">work</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Cadre/Speciality</label>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">call_to_action</i>
+                                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                                        <label for="textarea1">Employment History</label>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">event</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Date of Birth</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">language</i>
+                                        <select>
+                                            <option value="" disabled selected>Select citizenship</option>
+                                            <option value="1">Tanzanian</option>
+                                            <option value="2">Congolese</option>
+                                            <option value="3">Kenyan</option>
+                                        </select>
+                                        <label>Citizenship</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Basic Training</label>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">message</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Adress</label>
+                                    </div>
+
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">developer_board</i>
+                                        <select>
+                                            <option value="" disabled selected>Employment Status</option>
+                                            <option value="1">Temporary</option>
+                                            <option value="2">Permanent</option>
+
+                                        </select>
+                                        <label>Employment Status</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">event</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Date of Employment</label>
+                                    </div>
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">dvr</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Work Assignment</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">place</i>Next of Kin Informations</div>
+                            <div class="collapsible-body">
+                                <div class="row">
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">account_circle</i>
+                                        <input type="text" id="autocomplete-input" class="autocomplete">
+                                        <label for="icon_prefix">Full Name</label>
+                                    </div>
+
+                                    <div class="input-field col s6">
+                                        <i class="material-icons prefix">assignment_ind</i>
+                                        <input type="text" class="autocomplete">
+                                        <label for="icon_prefix">Contact</label>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">place</i>
+                                        <input type="text" id="autocomplete-input" class="autocomplete">
+                                        <label for="icon_prefix">Address</label>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <br />
+                            <div>
+                                <a  class="btn waves-effect waves-light gradient-45deg-purple-deep-orange">Register</a>
+                            </div>
+                        </li>
+                       
+                    </ul>
+
+
+                </div>
+                <div id="test2" class="col s12">
+                    <br />
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input type="text" id="autocomplete-input" class="autocomplete">
+                            <label for="icon_prefix">Search</label>
+                        </div>
+
+
+                        <div>
+                            <div class="chip">
+                                <img src="/images/avatar.png" alt="Contact Person">
+                                Jane Mohamed Doe
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+
+        </li>
+       
+    </ul>
+
+</div>

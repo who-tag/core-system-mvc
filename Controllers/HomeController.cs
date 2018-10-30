@@ -33,6 +33,12 @@ namespace Core.Controllers
             return View();
         }
 
+        [Route("hr/register")]
+        public IActionResult Hr()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
