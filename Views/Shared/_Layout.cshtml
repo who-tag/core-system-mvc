@@ -64,16 +64,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">
-                    <img alt="WHO" src="~/images/who-logo-white.png" style="margin-top:-13px; height:50px;" />
+                    <img alt="WHO" src="~/images/afro-logo-white.png" style="margin-top:-13px; height:50px;" />
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 @if (HttpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
                 {
-                    <ul class="nav navbar-nav">
-                        <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    </ul>
-
                     <!-- Icons far Right -->
                     <ul class="right hide-on-med-and-down">
                         <li>
